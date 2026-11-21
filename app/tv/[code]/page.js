@@ -76,12 +76,14 @@ export default function TV({ params }) {
   return (
     <div className="tvg">
       <div className="main">
-        <div className="panel" style={{ textAlign: 'center', marginBottom: 8 }}>
+        <div className="panel" style={{ textAlign: 'center', marginBottom: 6, padding: '6px 10px' }}>
           <div className="turnbox">
             {ph === 'over' ? '🏆 จบเกม' : `รอบ ${g.round}/${g.totalRounds} · 💡 ผู้ให้คำใบ้: `}{ph !== 'over' && <b style={{ color: colorOf(g, g.cue) }}>{cue}</b>}
           </div>
         </div>
+        <div style={{ width: 'min(100%, max(420px, calc((100vh - 290px) * 1.8)))', margin: '0 auto' }}>
         <Board marks={marks} order={g.order} names={g.names} target={ph === 'reveal' || ph === 'over' ? g.target : null} rings={ph === 'reveal' || ph === 'over'} fadeId={g.round} />
+        </div>
         <div className="clue" style={{ minHeight: '1.3em' }}>
           {ph === 'pick' && <span style={{ fontSize: '.6em', color: '#ffd166' }}>💡 {cue} กำลังเลือกสีลับและคิดคำใบ้…</span>}
           {ph !== 'pick' && <span>“{g.clue1}”{g.clue2 && <span style={{ color: '#ffd166' }}> + “{g.clue2}”</span>}</span>}

@@ -59,15 +59,17 @@ h1, h2, h3, .title { font-family: 'Prompt', sans-serif; margin: 0 0 .4em; }
 .banner { position: fixed; left: 50%; top: 10%; transform: translateX(-50%); background: #000c; color: #fff; padding: 10px 24px; border-radius: 14px; font: 800 2rem 'Prompt'; z-index: 25; animation: fxico 3s ease-out forwards; pointer-events: none; }
 .tvmute { position: fixed; right: 12px; bottom: 12px; z-index: 30; }
 .team-A { color: #7dd3fc; } .team-B { color: #f9a8d4; }
-.clue { font: 800 clamp(1.6rem, 4vw, 3rem) 'Prompt'; text-align: center; padding: 8px; }
-.tvg { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 14px; padding: 14px; min-height: 100vh; align-items: start; }
+.clue { font: 800 clamp(1.3rem, 4.6vh, 2.4rem) 'Prompt'; text-align: center; padding: 4px; }
+.tvg { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 14px; padding: 14px; height: 100vh; overflow: hidden; align-items: start; }
+.tvg .side { max-height: calc(100vh - 28px); overflow: hidden; }
+.tvg .side .log { flex: 1; min-height: 0; max-height: none; overflow: hidden; }
 .tvg .main { align-self: center; }
 .bigscore { display: flex; gap: 10px; }
 .bigscore > div { flex: 1; text-align: center; border-radius: 12px; padding: 8px; background: #1d5585; font: 800 2rem 'Prompt'; }
 .bigscore small { display: block; font: 500 .8rem 'Noto Sans Thai'; color: var(--mut); }
 .slider { width: 100%; height: 44px; accent-color: #fbbf24; }
-.res { text-align: center; font: 800 2.2rem 'Prompt'; }
-@media (max-width: 900px) { .tvg { grid-template-columns: 1fr; } }
+.res { text-align: center; font: 800 clamp(1.2rem, 3.6vh, 1.9rem) 'Prompt'; }
+@media (max-width: 900px) { .tvg { grid-template-columns: 1fr; height: auto; overflow: visible; } .tvg .side { max-height: none; } }
 
 /* พื้นหลังเคลื่อนไหว เปลี่ยนโทนตามช่วงของเกม */
 body { --t1: #0b2b45; --t2: #1b2a6b; --blob: #38bdf8; background: var(--t1); transition: background 1.5s; }
