@@ -1,6 +1,7 @@
 import './globals.css';
 
-export const metadata = { title: 'Hues & Cues Online', description: 'ทายสีจากคำใบ้ เล่นผ่านทีวีและมือถือ' };
+export const metadata = {
+  robots: { index: false, follow: false, nocache: true }, title: 'Hues & Cues Online', description: 'ทายสีจากคำใบ้ เล่นผ่านทีวีและมือถือ' };
 export const viewport = { width: 'device-width', initialScale: 1, maximumScale: 1 };
 
 export default function RootLayout({ children }) {
