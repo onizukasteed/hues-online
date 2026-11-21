@@ -125,6 +125,9 @@ function Game({ g, code, me, refresh }) {
       </div>
     );
   }
+  const mine = isCue && g.target != null && ph !== 'reveal' && ph !== 'over' && (
+    <div className="hand" style={{ textAlign: 'center' }}>🎯 สีลับของคุณ: <Swatch cell={g.target} size={26} /> <b>{cellName(g.target)}</b> (ดาว ★ บนกระดาน เฉพาะคุณที่เห็น)</div>
+  );
   const clueLine = g.clue1 && ph !== 'over' && ph !== 'pick' && (
     <div className="clue" style={{ fontSize: '1.6rem', padding: 2 }}>“{g.clue1}”{g.clue2 && <span style={{ color: '#ffd166' }}> + “{g.clue2}”</span>}</div>
   );
@@ -140,10 +143,11 @@ function Game({ g, code, me, refresh }) {
         </div>
       </div>
       {clueLine}
+      {mine}
       <div ref={scroller} className="boardwrap" style={{ maxHeight: '48vh', overflow: 'auto' }}>
         <div style={{ width: zoom ? '240%' : '100%' }}>
           <Board marks={ph === 'guess1' ? (g.marks[me.pid] ? { [me.pid]: g.marks[me.pid] } : {}) : g.marks} order={g.order} names={g.names}
-            target={ph === 'reveal' || ph === 'over' ? g.target : null} rings={ph === 'reveal' || ph === 'over'}
+            target={ph === 'reveal' || ph === 'over' || (isCue && g.target != null) ? g.target : null} rings={ph === 'reveal' || ph === 'over'}
             sel={sel} cands={ph === 'pick' && isCue ? g.cands : null} fadeId={g.round}
             onCell={interactive ? (c) => { snd.sfx('tick'); setSel(c); if (ph === 'pick' && g.cands.includes(c)) setPickC(c); } : undefined} />
         </div>
